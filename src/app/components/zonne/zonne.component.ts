@@ -10,7 +10,7 @@ import { ZonneService } from 'src/app/services/zonne.service';
 })
 export class ZonneComponent implements OnInit {
 
-  size:number = 9;
+  size:number = 7;
   currentPage:number = 0;
   totalPages: number;
   affectations :Affectation[]

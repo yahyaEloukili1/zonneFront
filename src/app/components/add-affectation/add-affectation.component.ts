@@ -24,6 +24,8 @@ ajoute = true
   alert('Merci de saisir le numéro !')
  }else{
   console.log(f.value)
+  let date = new Date(f.value.date);
+  f.value.numero = date.getUTCFullYear() + "/"+f.value.numero
   this.pdiService.addResource("affectations",f.value).subscribe(data=>{
    this.ajoute =true
     f.reset()
