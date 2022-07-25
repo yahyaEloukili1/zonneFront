@@ -1,0 +1,94 @@
+<div class="container">
+    <div class="card card-primary">
+        <div class="card-header" style="text-align: right;">لائحة الإستفادات</div>
+        
+        <div class="card-body">
+            <div class="d-flex">
+                <div class="mr-auto d-inline-block">
+             
+                    <button (click)="ajouter()" class="btn btn-primary" >
+                        إضافة إستفادة جديدة <i class="fa fa-plus-square-o" style="font-size:17px"></i> 
+                        </button>
+                </div>
+            <div class="d-inline-block">
+                <form #f="ngForm" class="form-inline" (ngSubmit)="onChercher(f.value)">
+                    <div class="form-group row">
+                        <button type="submit" class="btn btn-info" style="width: 60px;"><i class="fa fa-search" style="font-size:17px"></i> </button>
+                       &nbsp;
+                      
+                        <input type="text" class="form-control" ngModel name="keyword">&nbsp;
+                        <label class="col-form-label mr-3">سند عدد  </label>
+                     
+                        
+                    </div>
+                    
+               </form>
+            </div>
+           
+        </div>
+      
+          
+            <table class="table table-bordered mt-3" *ngIf="affectations">
+                <thead>
+                    <!-- <tr>
+                        <th style="width:28%"></th>
+                        <th  style="text-align: right;">نوع الخدمة</th>
+                        <th  style="text-align: right;width:2%;">عدد صناديق الزيت</th>
+                        <th  style="text-align: right;width:2%;">عدد صناديق السكر</th>
+                        <th  style="text-align: right;width:2%;">عدد أكياس الدقيق</th>
+                        <th  style="text-align: right;width:14%;">رقم البطاقة الوطنية</th>
+                        <th  style="text-align: right;width:14%;">النسب</th>
+                        <th  style="text-align: right;width:14%;">الإسم</th>
+                        <th  style="text-align: right;width:14%;">سند عدد</th>
+                        
+
+                    </tr> -->
+                    <tr>
+                        <th style="width:20%"></th>
+                        <th  style="text-align: right;width:5%;">نوع الخدمة</th>
+                        <th  style="text-align: right;width:5%;">عدد صناديق الزيت</th>
+                        <th  style="text-align: right;width:5%;">عدد صناديق السكر</th>
+                        <th  style="text-align: right;width:5%;">عدد أكياس الدقيق</th>
+                        <th  style="text-align: right;width:15%;">رقم البطاقة الوطنية</th>
+                        <th  style="text-align: right;width:15%;">النسب</th>
+                        <th  style="text-align: right;width:15%;">الإسم</th>
+                        <th  style="text-align: right;width:15%;">سند عدد</th>
+                        
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let p of affectations['_embedded'].affectations">
+                        <td style="width:20%">
+                            <a class="btn btn-danger" (click)="onDeleteAffectation(p['_links'].self.href)"><i class="fa fa-remove" style="font-size:17px"></i> </a>&nbsp;
+                            <a class="btn btn-secondary text-light"  (click)="onEditAffectation(p)"><i class="fa fa-edit" style="font-size:17px"></i> </a>&nbsp;
+                            <a class="btn btn-success"  (click)="download(p)"><i class="fa fa-print" style="font-size:17px"></i> </a>
+                          
+                        </td>
+                        <td  style="text-align: right;width:5%;">{{p.type}}</td>
+                        <td style="text-align: right;width:5%;">{{p.oeil}}</td>
+                        <td  style="text-align: right;width:5%;">{{p.sucr}}</td>
+                        <td  style="text-align: right;width:5%;">{{p.farine}}</td>
+                        <td  style="text-align: right;width:15%;">{{p.cin}}</td>
+                        <td  style="text-align: right;width:15%;">{{p.nom}}</td>
+                        <td style="text-align: right;width:15%;">{{p.prenom}}</td>
+                        <td  style="text-align: right;width:15%;">{{p.numero}}</td>
+                        
+                       
+                       
+                  
+                    </tr>
+                </tbody>
+              
+            </table>
+            <ul *ngIf="pages" class="pagination" style="float: right;">
+                <li [ngClass]="i==currentPage ? 'page-item active' : 'page-item'" *ngFor="let p of pages;let i = index" >
+                    <a class="clickable page-link" (click)="onPageAffectation(i)" >{{i}}</a>
+                </li>
+            </ul>
+         
+          
+           
+        </div>
+    </div>
+</div>

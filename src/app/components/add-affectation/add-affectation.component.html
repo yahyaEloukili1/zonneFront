@@ -1,0 +1,102 @@
+
+<div class="col-md-8 mx-auto">
+    <!-- <button (click)="gotoList()" class="btn btn-primary" style="float: right;">Liste des projets</button><br><br> -->
+    <div class="card">
+        <div class="card-header" style="display: block;text-align: right;">
+            إضافة إستفادة جديدة
+        </div>
+        <div class="card-body">
+        <form #f="ngForm" (ngSubmit)="onSaveAffectation(f)">
+           
+                 
+          
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                <label  class="control-label" style="display: block;text-align: right;">
+                                    :  إسم  المستفيد
+                                </label>
+                                <input type="text" name="prenom" style="text-align: right;" ngModel class="form-control">
+                            </div> 
+                           </div>
+                           <div class="col">
+                            <div class="form-group">
+                                <label  class="control-label" style="display: block;text-align: right;">
+                                    : * سند عدد
+                                </label>
+                                <input type="text" name="numero" style="text-align: right;" ngModel class="form-control">
+                            </div> 
+                           </div>
+                       </div>
+                       <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                <label  class="control-label" style="display: block;text-align: right;">
+                                    : * رقم البطاقة الوطنية
+                                </label>
+                                <input type="text" name="cin" style="text-align: right;" ngModel class="form-control">
+                            </div> 
+                           </div>
+                           <div class="col">
+                            <div class="form-group">
+                                <label  class="control-label" style="display: block;text-align: right;">
+                                    : نسب المستفيد
+                                </label>
+                                <input type="text" name="nom" style="text-align: right;" ngModel class="form-control">
+                            </div> 
+                           </div>
+                       </div>
+                       <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                <label  class="control-label" style="display: block;text-align: right;">
+                                    : عدد صناديق السكر
+                                </label>
+                                <input type="number" name="sucr" style="text-align: right;" ngModel class="form-control">
+                            </div> 
+                           </div>
+                           <div class="col">
+                            <div class="form-group">
+                                <label  class="control-label" style="display: block;text-align: right;">
+                                    : عدد أكياس الدقيق
+                                </label>
+                                <input type="number" name="farine" style="text-align: right;" ngModel class="form-control">
+                            </div> 
+                           </div>
+                       </div>
+                       <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                <label  class="control-label" style="display: block;text-align: right;">
+                                    : نوع الخدمة
+                                </label>
+                                <select class="form-control" name="type" ngModel>
+                                    <option value=""  style="display: block;text-align: right;"></option>
+                                    <option  value="تسليم"   style="display: block;text-align: right;" >تسليم</option>
+                                    <option value="بيع"   style="display: block;text-align: right;">بيع</option>
+                                  </select>
+                                  <!-- <input type="text" name="type" ngModel class="form-control"> -->
+                            </div> 
+                           </div>
+                        <div class="col">
+                            <div class="form-group">
+                                <label  class="control-label" style="display: block;text-align: right;">
+                                    : عدد صناديق الزيت
+                                </label>
+                                <input type="number" style="text-align: right;" name="oeil" ngModel class="form-control">
+                            </div> 
+                           </div>
+                          
+                       </div>
+                       <div>
+                        <button class="btn btn-success"  style="float: right; margin-left: 7px;" type="submit">حفظ</button>
+                 
+                        <button class="btn btn-danger" style="float: right;" type="button" (click)="reset(f)">إلغاء</button>
+                  
+                       </div>
+            
+    
+        </form>
+    </div>
+    </div>
+</div>
