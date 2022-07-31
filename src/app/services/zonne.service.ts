@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 @Injectable({
@@ -13,46 +13,37 @@ export class ZonneService {
  constructor(private http: HttpClient) { }
 
  getResourceAll(resource: String):Observable<any[]>{
-   if(this.jwtToken ==null)
-   this.loadToken()
+   
    return this.http.get<any[]>(`${this.host}/${resource}`);
 }
- getResource(resource: String,page:number,size:number):Observable<any[]>{ if(this.jwtToken ==null)
-   this.loadToken()
+ getResource(resource: String,page:number,size:number):Observable<any[]>{ 
      return this.http.get<any[]>(`${this.host}/${resource}?page=${page}&size=${size}`);
  }
 
- addResource(resource: string,value:any):Observable<any>{ if(this.jwtToken ==null)
-   this.loadToken()
+ addResource(resource: string,value:any):Observable<any>{ 
    return this.http.post<any>(`${this.host}/${resource}`,value);
 }
 
- getResourceByKeyword(resource: String,page:number,size:number,mc:string,source:string):Observable<any[]>{ if(this.jwtToken ==null)
-   this.loadToken()
-   console.log(`${this.host}/${resource}/search/by${source}Page?mc=${mc}&page=${page}&size=${size}`,"aaaaaaaaaaaaaaaaaaaaa")
+ getResourceByKeyword(resource: String,page:number,size:number,mc:string,source:string):Observable<any[]>{ {}
+
    return this.http.get<any[]>(`${this.host}/${resource}/search/by${source}Page?mc=${mc}&page=${page}&size=${size}`);
 }
 
-getResourceByKeywordNoPage(resource: String,size:number,mc:string,source:string):Observable<any[]>{ if(this.jwtToken ==null)
- this.loadToken()
+getResourceByKeywordNoPage(resource: String,size:number,mc:string,source:string):Observable<any[]>{ 
  return this.http.get<any[]>(`${this.host}/${resource}/search/by${source}Page?mc=${mc}&size=${size}`);
 }
 
 
-deleteResource(resource:string,url:string){ if(this.jwtToken ==null)
- this.loadToken()
+deleteResource(resource:string,url:string){ 
+
 return this.http.delete(url);
 }
-getOneResource(url:string):Observable<any>{ if(this.jwtToken ==null)
- this.loadToken()
+getOneResource(url:string):Observable<any>{ 
+
 return this.http.get<any>(url)
 }
-// getOneResourceById(resource:string,id:number):Observable<Province>{ if(this.jwtToken ==null)
-//  this.loadToken()
-//  return this.http.get<Province>(`${this.host}/${resource}/${id}`)
-// }
-updateResource(url:string,data:any){ if(this.jwtToken ==null)
- this.loadToken()
+updateResource(url:string,data:any){ 
+
  console.log(url)
  return this.http.patch(url,data)
 }

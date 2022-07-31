@@ -14,7 +14,6 @@ export class AppComponent {
   }
   met(){
    this.token = this.pdiService.loadToken()
-   console.log(this.token,"ksksksksksk")
   }
   logout(){
     this.pdiService.logout()

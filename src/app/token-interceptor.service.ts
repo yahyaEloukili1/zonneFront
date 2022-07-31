@@ -10,6 +10,7 @@ import { ZonneService } from "./services/zonne.service";
 export class TokenInterceptorService implements HttpInterceptor {
 
   constructor(private injector: Injector,private router: Router) { }
+
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     console.log(req,"***********")
     if(req.url=='http://localhost:8087/login'){
@@ -27,6 +28,7 @@ export class TokenInterceptorService implements HttpInterceptor {
         tap(
           succ=>{},
           err=>{
+            console.log(err)
             if(err.status===403){
               pdiService.logout()
               this.router.navigateByUrl('/zonn/login')
@@ -35,6 +37,6 @@ export class TokenInterceptorService implements HttpInterceptor {
         )
       )
     }
-
   }
-}
+  }
+
