@@ -63,12 +63,15 @@ login(user){
 saveToken(jwt){
   localStorage.setItem('token',jwt);
 }
+getFile(id){
+  return this.http.get(this.host+"/fiche/"+id,{responseType: 'arraybuffer'})
+}
 loadToken(){
   this.jwtToken = localStorage.getItem('token');
   return this.jwtToken
 }
 download(url){
-  console.log(this.host+url,"azazazzaazzzzzzzzzzzzz")
+  console.log(url,"azazazzaazzzzzzzzzzzzz")
   return this.http.get(url)
 }
 logout(){

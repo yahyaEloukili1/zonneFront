@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Affectation } from 'src/app/models/Affectation';
 import { ZonneService } from 'src/app/services/zonne.service';
-
+import { saveAs } from "file-saver/dist/FileSaver";
 @Component({
   selector: 'app-zonne',
   templateUrl: './zonne.component.html',
@@ -24,8 +24,21 @@ this.onGetAffectations()
   download(p){
 let id = p.id;
 console.log(p)
-this.zoneService.download(`${this.zoneService.host}/report/pdf/${id}`).subscribe(data=>{
-  alert('Fiche télechargé avec succées!')
+// this.zoneService.download(`${this.zoneService.host}/report/pdf/${id}`).subscribe(data=>{
+//   alert('Fiche télechargé avec succées!')
+// })
+this.zoneService.getFile(id).subscribe(pdf=>{
+this.zoneService.getOneResource(`${this.zoneService.host}`+`/affectations/`+id).subscribe(data=>{
+  
+
+  const blob = new Blob([pdf],{type: 'application/pdf'})
+  const fileName = data.ficheName;
+  saveAs(blob,fileName)
+  // alert('Fiche télechargé avec succées!')
+
+})
+
+
 })
   }
   ajouter(){
@@ -42,6 +55,7 @@ this.zoneService.download(`${this.zoneService.host}/report/pdf/${id}`).subscribe
     })
   }
   onPageAffectation(i:number){
+    
     this.currentPage = i;
    this.chercherAffectations()
   }
@@ -64,9 +78,10 @@ this.zoneService.download(`${this.zoneService.host}/report/pdf/${id}`).subscribe
 
   }
   onEditAffectation(p:Affectation){
-    console.log(p)
-      let url = p['_links'].self.href;
-      this.router.navigateByUrl("zonn/edit-affectation/"+btoa(url))
+    console.log(p.id,"popopoop")
+      // let url = p['_links'].self.href;
+    
+      this.router.navigateByUrl("zonn/edit-affectation/"+p.id)
   }
   onDeleteAffectation(url:string){
     if(confirm('Etes vous sur de vouloir supprimer cette affectation ?')){

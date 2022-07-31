@@ -8,5 +8,7 @@ export interface Affectation{
     cin: String,
     nom: String,
     prenom: String,
-    date: Date
+    date: Date,
+    num: String,
+    ficheName: String
 }

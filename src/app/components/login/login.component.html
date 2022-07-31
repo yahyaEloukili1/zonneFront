@@ -7,24 +7,24 @@
     </div>
     <div class="card">
         <div class="card-header" style="text-align: center;">
-            Authentification
+            تسجيل الدخول
         </div>
         <div class="card-body">
         <form #f="ngForm" (ngSubmit)="onSubmit(f)">
             <div class="form-group">
-                <label  class="control-label">
-                  Nom d'utilisateur
+                <label  class="control-label"  style="display: block;text-align: right;">
+                    إسم المستخدم
                 </label>
-                <input type="text" name="username" ngModel  ngModel class="form-control">
+                <input type="text" name="username"  style="text-align: right;" ngModel  ngModel class="form-control">
             </div>
             <div class="form-group">
-                <label  class="control-label">
-                    Mot de passe
+                <label  class="control-label"  style="display: block;text-align: right;" >
+                    كلمة المرور
                 </label>
-                <input type="text" type="password" name="password" ngModel class="form-control">
+                <input type="text" type="password"  style="text-align: right;" name="password" ngModel class="form-control">
             </div>
             <div class="row justify-content-center">
-            <button class="btn btn-success" style="width: 93%;"   type="submit">S'authentifier</button>
+            <button class="btn btn-success" style="width: 93%;"   type="submit">تسجيل الدخول</button>
         </div>
     
         </form>

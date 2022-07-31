@@ -20,8 +20,7 @@ mode = 0
   onSubmit(f:NgForm){
       this.pdiService.login(f.value).subscribe(resp=>{
         let jwt = resp.headers.get('Authorization')
-        this.pdiService.saveToken(jwt);
-        // this.pdiService.save(jwt) 
+        this.pdiService.saveToken(jwt); 
         this.router.navigateByUrl("zonn/affectations")
         console.log(jwt)
         
