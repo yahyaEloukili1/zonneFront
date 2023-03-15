@@ -1,78 +1,107 @@
 <div class="container">
+  <h6 style="text-align: center;">لائحة المستفيدين من قفف المواد الغدائية الأساسية 2023</h6>  
+    <p style="text-align: center;margin-bottom: 30px;" > {{total }}  المجموع  PC نوع الحصة  PC {{typeName ? '-' : ''}} {{typeName ? typeName : ''}}  لائحة   <br>  
+    
+          السكر  {{sucre }} - الزيت {{oeil }} - الدقيق {{farine }}
+</p>
     <div class="card card-primary">
         <div class="card-header" style="text-align: right;">لائحة الإستفادات</div>
-        
+
+
         <div class="card-body">
             <div class="d-flex">
                 <div class="mr-auto d-inline-block">
-             
                     <button (click)="ajouter()" class="btn btn-primary" >
                         إضافة إستفادة جديدة <i class="fa fa-plus-square-o" style="font-size:17px"></i> 
-                        </button>
+                        </button> 
+                        &nbsp;
+                        <button (click)="print()" class="btn btn-success" >
+                            تحميل
+                            </button>      
+                           
+                
                 </div>
-            <div class="d-inline-block">
-                <form #f="ngForm" class="form-inline" (ngSubmit)="onChercher(f.value)">
-                    <div class="form-group row">
-                        <button type="submit" class="btn btn-info" style="width: 60px;"><i class="fa fa-search" style="font-size:17px"></i> </button>
-                       &nbsp;
-                      
-                        <input type="text" class="form-control" ngModel name="keyword">&nbsp;
-                        <label class="col-form-label mr-3">رقم البطاقة الوطنية </label>
-                     
-                        
-                    </div>
+              
                     
-               </form>
+
+            <div class="d-inline-block" style="text-align: center;">
+                <div class="d-flex">
+                  
+                    <div class="d-inline-block">
+                        <select class="form-control" name="catgorie" *ngIf="categories" [ngModel]="isCinSelected" (change)="onTypeChange($event)">
+                            <option [value]="0">All</option>
+                            <option *ngFor="let categorie of categories" [value]="categorie.id">{{categorie.name}}</option>
+                          </select>
+                      </div>
+                      &nbsp;
+                      <div class="d-inline-block">
+                        الفئة
+                      </div>
+                      <div class="d-inline-block">
+                        <select class="form-control" name="stock" *ngIf="stocks" [ngModel]="isCinSelected" (change)="onTypeChange2($event)">
+                            <option [value]="0">All</option>
+                            <option *ngFor="let stock of stocks" [value]="stock.id">{{stock.reference}}</option>
+                          </select>
+                      </div>
+                      <div class="d-inline-block">
+                        المخزون
+                      </div>
+                  
+                    
+                </div>
+               
             </div>
            
+            <div style="display: flex; align-items: center;">
+                <button class="btn btn-primary" (click)="showInput()" style="margin-left: 10px;">
+                    <i class="fa fa-search" style="font-size:17px"></i>
+                  </button>&nbsp;
+                <input type="text" class="form-control" [(ngModel)]="inputValue" placeholder="CIN">
+         
+              </div>
+      
+      
         </div>
+        
       
           
-            <table class="table table-bordered mt-3" *ngIf="affectations">
+            <table class="table table-bordered table-sm mt-3" *ngIf="affectations">
                 <thead>
-                    <!-- <tr>
-                        <th style="width:28%"></th>
-                        <th  style="text-align: right;">نوع الخدمة</th>
-                        <th  style="text-align: right;width:2%;">عدد صناديق الزيت</th>
-                        <th  style="text-align: right;width:2%;">عدد صناديق السكر</th>
-                        <th  style="text-align: right;width:2%;">عدد أكياس الدقيق</th>
-                        <th  style="text-align: right;width:14%;">رقم البطاقة الوطنية</th>
-                        <th  style="text-align: right;width:14%;">النسب</th>
-                        <th  style="text-align: right;width:14%;">الإسم</th>
-                        <th  style="text-align: right;width:14%;">سند عدد</th>
-                        
-
-                    </tr> -->
                     <tr>
-                        <th style="width:20%"></th>
-                        <th  style="text-align: right;width:5%;">نوع الخدمة</th>
-                        <th  style="text-align: right;width:5%;">عدد صناديق الزيت</th>
-                        <th  style="text-align: right;width:5%;">عدد صناديق السكر</th>
-                        <th  style="text-align: right;width:5%;">عدد أكياس الدقيق</th>
-                        <th  style="text-align: right;width:15%;">رقم البطاقة الوطنية</th>
-                        <th  style="text-align: right;width:15%;">النسب</th>
-                        <th  style="text-align: right;width:15%;">الإسم</th>
-                        <th  style="text-align: right;width:15%;">سند عدد</th>
+                        <th></th>
+                        <!-- <th  style="text-align: right;">  مؤهل</th> -->
+                        <th  style="text-align: right;">  العنوان</th>
+                        <th  style="text-align: right;">الفئة</th>
+                        <th  style="text-align: right;">الملحقة الإدارية</th>
+                        <th  style="text-align: right;"> الهاتف</th>
+                        <th  style="text-align: right;">النسب</th>
+                        <th  style="text-align: right;">الإسم</th>
+                        <th  style="text-align: right;">رقم البطاقة الوطنية</th>
+                        <th  style="text-align: right;">رمز المستفيد</th>
+                       
                         
 
                     </tr>
                 </thead>
                 <tbody>
                     <tr *ngFor="let p of affectations['_embedded'].affectations">
-                        <td style="width:20%">
+                        <td>
                             <a class="btn btn-danger" (click)="onDeleteAffectation(p['_links'].self.href)"><i class="fa fa-remove" style="font-size:17px"></i> </a>&nbsp;
-                            <a class="btn btn-secondary text-light"  (click)="onEditAffectation(p)"><i class="fa fa-edit" style="font-size:17px"></i> </a>&nbsp;
+                            <!-- <a class="btn btn-secondary text-light"  (click)="onEditAffectation(p)"><i class="fa fa-edit" style="font-size:17px"></i> </a>&nbsp; -->
                             <a class="btn btn-success"  (click)="download(p)"><i class="fa fa-print" style="font-size:17px"></i> </a>
                           
                         </td>
-                        <td  style="text-align: right;width:5%;">{{p.type}}</td>
-                        <td style="text-align: right;width:5%;">{{p.oeil}}</td>
-                        <td  style="text-align: right;width:5%;">{{p.sucr}}</td>
-                        <td  style="text-align: right;width:5%;">{{p.farine}}</td>
-                        <td  style="text-align: right;width:15%;">{{p.cin}}</td>
-                        <td  style="text-align: right;width:15%;">{{p.nom}}</td>
-                        <td style="text-align: right;width:15%;">{{p.prenom}}</td>
-                        <td  style="text-align: right;width:15%;">{{p.numero}}</td>
+                        <!-- <td style="text-align: right;">{{p.moahal? 'مؤهل' : 'غير مؤهل'}}</td> -->
+                        <td  style="text-align: right;">{{p.address}}</td>
+                        <td  style="text-align: right;">{{p.categorie?.name}}</td>
+                        <td  style="text-align: right;"></td>
+                        <td  style="text-align: right;">{{p.tele}}</td>
+                     
+                        <td  style="text-align: right;">{{p.nom}}</td>
+                        <td style="text-align: right;">{{p.prenom}}</td>
+                        <td  style="text-align: right;">{{p.cin}}</td>
+                        <td  style="text-align: right;">{{p.signe}}</td>
+                       
                         
                        
                        
@@ -81,12 +110,6 @@
                 </tbody>
               
             </table>
-            <ul *ngIf="pages" class="pagination" style="float: right;">
-                <li [ngClass]="i==currentPage ? 'page-item active' : 'page-item'" *ngFor="let p of pages;let i = index" >
-                    <a class="clickable page-link" (click)="onPageAffectation(i)" >{{i}}</a>
-                </li>
-            </ul>
-         
           
            
         </div>

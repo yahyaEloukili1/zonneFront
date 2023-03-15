@@ -1,0 +1,116 @@
+<div class="container">
+    <h6 style="text-align: center;">لائحة المستفيدين من قفف المواد الغدائية الأساسية 2023</h6>  
+      <p style="text-align: center;margin-bottom: 30px;" > {{total }}  المجموع  PN نوع الحصة  PN {{typeName ? '-' : ''}} {{typeName ? typeName : ''}}  لائحة   <br>  
+      
+            السكر  {{sucre }} - الزيت {{oeil }} - الدقيق {{farine }}
+  </p>
+      <div class="card card-primary">
+          <div class="card-header" style="text-align: right;">لائحة الإستفادات</div>
+  
+  
+          <div class="card-body">
+              <div class="d-flex">
+                  <div class="mr-auto d-inline-block">
+                      <button (click)="ajouter()" class="btn btn-primary" >
+                          إضافة إستفادة جديدة <i class="fa fa-plus-square-o" style="font-size:17px"></i> 
+                          </button> 
+                          &nbsp;
+                          <button (click)="print()" class="btn btn-success" >
+                              تحميل
+                              </button>      
+                             
+                  
+                  </div>
+                
+                      
+  
+              <div class="d-inline-block" style="text-align: center;">
+                  <div class="d-flex">
+                    
+                      <div class="d-inline-block">
+                          <select class="form-control" name="catgorie" *ngIf="categories" [ngModel]="" (change)="onTypeChange($event)">
+                              <option [value]="0">All</option>
+                              <option *ngFor="let categorie of categories" [value]="categorie.id">{{categorie.name}}</option>
+                            </select>
+                        </div>
+                        &nbsp;
+                        <div class="d-inline-block">
+                            الفئة
+                          </div>
+                        <div class="d-inline-block">
+                          <select class="form-control" name="stock" *ngIf="stocks" [ngModel]="" (change)="onTypeChange2($event)">
+                              <option [value]="0">All</option>
+                              <option *ngFor="let stock of stocks" [value]="stock.id">{{stock.reference}}</option>
+                            </select>
+                        </div>
+                       
+                        <div class="d-inline-block">
+                            المخزون
+                          </div>
+                  </div>
+                 
+              </div>
+             
+              <div style="display: flex; align-items: center;">
+                  <button class="btn btn-primary" (click)="showInput()" style="margin-left: 10px;">
+                      <i class="fa fa-search" style="font-size:17px"></i>
+                    </button>&nbsp;
+                  <input type="text" class="form-control" [(ngModel)]="inputValue" placeholder="CIN">
+           
+                </div>
+        
+        
+          </div>
+          
+        
+            
+              <table class="table table-bordered table-sm mt-3" *ngIf="affectations">
+                  <thead>
+                      <tr>
+                          <th></th>
+                          <!-- <th  style="text-align: right;">  مؤهل</th> -->
+                          <th  style="text-align: right;">  العنوان</th>
+                          <th  style="text-align: right;">الفئة</th>
+                          <th  style="text-align: right;">الملحقة الإدارية</th>
+                          <th  style="text-align: right;"> الهاتف</th>
+                          <th  style="text-align: right;">النسب</th>
+                          <th  style="text-align: right;">الإسم</th>
+                          <th  style="text-align: right;">رقم البطاقة الوطنية</th>
+                          <th  style="text-align: right;">رمز المستفيد</th>
+                         
+                          
+  
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <tr *ngFor="let p of affectations['_embedded'].affectations">
+                          <td>
+                              <a class="btn btn-danger" (click)="onDeleteAffectation(p['_links'].self.href)"><i class="fa fa-remove" style="font-size:17px"></i> </a>&nbsp;
+                              <!-- <a class="btn btn-secondary text-light"  (click)="onEditAffectation(p)"><i class="fa fa-edit" style="font-size:17px"></i> </a>&nbsp; -->
+                              <a class="btn btn-success"  (click)="download(p)"><i class="fa fa-print" style="font-size:17px"></i> </a>
+                            
+                          </td>
+                          <!-- <td style="text-align: right;">{{p.moahal? 'مؤهل' : 'غير مؤهل'}}</td> -->
+                          <td  style="text-align: right;">{{p.address}}</td>
+                          <td  style="text-align: right;">{{p.categorie?.name}}</td>
+                          <td  style="text-align: right;"></td>
+                          <td  style="text-align: right;">{{p.tele}}</td>
+                       
+                          <td  style="text-align: right;">{{p.nom}}</td>
+                          <td style="text-align: right;">{{p.prenom}}</td>
+                          <td  style="text-align: right;">{{p.cin}}</td>
+                          <td  style="text-align: right;">{{p.signe}}</td>
+                         
+                          
+                         
+                         
+                    
+                      </tr>
+                  </tbody>
+                
+              </table>
+            
+             
+          </div>
+      </div>
+  </div>

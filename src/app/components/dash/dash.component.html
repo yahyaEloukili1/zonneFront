@@ -1,0 +1,107 @@
+<div class="container">
+    <div>
+        <div class="col-4 mx-auto">
+            <div class="d-flex">
+             
+                <div class="d-inline-block">
+                    <select class="form-control mb-3" name="stock" *ngIf="stocks" [ngModel]="" (change)="onTypeChange2($event)">
+                        <option *ngFor="let stock of stocks" [value]="stock.id">{{stock.reference}}</option>
+                      </select>
+                </div>
+                &nbsp;
+                <div class="d-inline-block mt-1">
+                    <label class="text-align:right;padding-right:40px;">المرجو اختيار المخزون</label> 
+                </div>
+            </div>
+           
+         
+        </div>
+  
+      </div> 
+    <table class="table table-bordered" *ngIf="stocks && typeSelected2">
+        <tr>
+            <th>الدقيق(كلغ)</th>
+            <th>الزيت(كلغ)</th>
+            <th>السكر(كلغ)</th>
+            <th>الحصة</th>
+         
+        </tr>
+        <tr>
+            <td>{{stock.quantiteFarine}}</td>
+            <td>{{stock.quantiteOeil}}</td>
+            <td>{{stock.quantiteSucre}}</td>
+            <td>الحصة المستلمة</td>
+        </tr>
+        <tr>
+            <td>{{farineENvoye}}</td>
+            <td>{{oeilEnvoye}}</td>
+            <td>{{sucreEnvoye}}</td>
+            <td>الحصة الموزعة</td>
+        </tr>
+        <tr>
+            <td>{{stock.quantiteFarine-farineENvoye}}</td>
+            <td>{{stock.quantiteOeil-oeilEnvoye}}</td>
+            <td>{{stock.quantiteSucre-sucreEnvoye}}</td>
+            <td>موجود في المستودع</td>
+        </tr>
+    </table>
+    <table class="table table-bordered" *ngIf="stocks && typeSelected2">
+        <tr>
+          
+            <th colspan="3" style="text-align: center;">عدد الحصص المتبقية</th>
+           
+            <th colspan="2"></th>
+        </tr>
+        <tr>
+            <td> الدقيق </td>
+            <td>الزيت</td>
+            <td>  السكر </td>
+            <th colspan="2"></th>
+        </tr>
+        <tr>
+            <td>{{totalPCMF}}</td>
+            <td>{{0}}</td>
+            <td>0</td>
+            <td>{{stock.quantite-total}}</td>
+            <td>عدد الحصص الكاملة</td>
+        </tr>
+        <tr>
+            <td>{{totalPCMF*50}}</td>
+            <td>{{0}}</td>
+            <td>0</td>
+            <td>{{stock.quantite-total}}</td>
+            <td>عدد الحصص الكاملة</td>
+        </tr>
+    </table>
+
+
+
+    <table class="table table-bordered" *ngIf="stocks && typeSelected2">
+        <tr>
+          
+            <th colspan="3" style="text-align: center;">عدد الحصص المتبقية</th>
+           
+            <th colspan="2"></th>
+        </tr>
+        <tr>
+            <td> الدقيق </td>
+            <td>الزيت</td>
+            <td>  السكر </td>
+            <th colspan="2"></th>
+        </tr>
+        <tr>
+            <td>{{totalPCMF}}</td>
+            <td>{{2*(stock.quantite-total)}}</td>
+            <td>0</td>
+            <td>{{stock.quantite-total}}</td>
+            <td>عدد الحصص العادية</td>
+        </tr>
+        <tr>
+            <td>{{totalPCMF*50}}</td>
+            <td>{{2*5*(stock.quantite-total)}}</td>
+            <td>0</td>
+            <td>{{stock.quantite-total}}</td>
+            <td>عدد الحصص العادية</td>
+        </tr>
+    </table>
+</div>

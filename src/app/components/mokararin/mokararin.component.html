@@ -1,0 +1,22 @@
+<div class="container">
+    <table class="table table-bordered">
+        <thead>
+            <th>الفئة</th>
+            <th>نوع الحصة</th>
+            <th>cin</th>
+            <th>id</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let d of duplicates;let i = index">
+                <!-- {{'MI - dbm'}} -->
+                <td>
+
+                </td>
+                <!-- {{i==0?'PC - PN': 'PC'}} -->
+               <td></td>
+                <td>{{d.cin}}</td>
+                <td>{{i+1}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

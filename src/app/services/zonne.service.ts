@@ -14,11 +14,18 @@ export class ZonneService {
 
  getResourceAll(resource: String):Observable<any[]>{
    
-   return this.http.get<any[]>(`${this.host}/${resource}`);
+   return this.http.get<any[]>(`${this.host}/${resource}?size=1000`);
+}
+getResource2(url){
+  return this.http.get<any[]>(url);
 }
  getResource(resource: String,page:number,size:number):Observable<any[]>{ 
      return this.http.get<any[]>(`${this.host}/${resource}?page=${page}&size=${size}`);
  }
+
+ getResourceByID(resource: String,id):Observable<any[]>{ 
+  return this.http.get<any[]>(`${this.host}/${resource}/${id}`);
+}
 
  addResource(resource: string,value:any):Observable<any>{ 
    return this.http.post<any>(`${this.host}/${resource}`,value);
@@ -33,6 +40,10 @@ getResourceByKeywordNoPage(resource: String,size:number,mc:string,source:string)
  return this.http.get<any[]>(`${this.host}/${resource}/search/by${source}Page?mc=${mc}&size=${size}`);
 }
 
+getResourceByKeywordNoPage2(resource: String,mc:string,source:string):Observable<any[]>{ 
+  return this.http.get<any[]>(`${this.host}/${resource}/search/by${source}?mc=${mc}`);
+ }
+ 
 
 deleteResource(resource:string,url:string){ 
 

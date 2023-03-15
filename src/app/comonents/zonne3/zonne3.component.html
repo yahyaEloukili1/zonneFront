@@ -1,0 +1,121 @@
+<div class="container">
+    <p style="text-align: center;margin-bottom: 30px;" >   PCMF-{{typeName ? typeName : '....'}}  لائحة   <br>  
+ {{total }}  المجموع   <br>  
+ {{sucre }}  السكر   <br> 
+ {{oeil }}  الزيت   <br> 
+ {{farine }}  الدقيق   <br> 
+</p>
+    <div class="card card-primary">
+        <div class="card-header" style="text-align: right;">لائحة الإستفادات</div>
+
+
+        <div class="card-body">
+            <div class="d-flex">
+                <div class="mr-auto d-inline-block">
+             
+                    <button (click)="ajouter()" class="btn btn-primary" >
+                        إضافة إستفادة جديدة <i class="fa fa-plus-square-o" style="font-size:17px"></i> 
+                        </button>
+                        
+                </div>
+                <div class="col-3" style="float: right;">
+                    <label for="" style="display:inline-block;float: right;">الفئة</label>
+                    <select class="form-control" name="catgorie" *ngIf="categories" (change)="onTypeChange($event)">
+                    
+                        <option [value]=""></option>
+                        <option *ngFor="let categorie of categories" [value]="categorie.id">{{categorie.name}}</option>
+                      </select>
+                  </div>
+                    
+
+            <div class="d-inline-block">
+                <!-- ngSubmit)="onChercher(f.value)" -->
+                <!-- <form #f="ngForm" class="form-inline" (ngSubmit)="onChercher(f.value)">
+                    <div class="form-group row">
+                        <button type="submit" class="btn btn-info" style="width: 60px;"><i class="fa fa-search" style="font-size:17px"></i> </button>
+                       &nbsp;
+                      
+                        <input type="text" class="form-control" ngModel name="keyword">&nbsp;
+                        <label class="col-form-label mr-3">رقم البطاقة الوطنية </label>
+                     
+                        
+                    </div>
+                    
+               </form> -->
+            </div>
+           
+        </div>
+      
+          
+            <table class="table table-bordered table-sm mt-3"  *ngIf="affectations">
+                <thead>
+                    <!-- <tr>
+                        <th style="width:28%"></th>
+                        <th  style="text-align: right;">نوع الخدمة</th>
+                        <th  style="text-align: right;width:2%;">عدد صناديق الزيت</th>
+                        <th  style="text-align: right;width:2%;">عدد صناديق السكر</th>
+                        <th  style="text-align: right;width:2%;">عدد أكياس الدقيق</th>
+                        <th  style="text-align: right;width:14%;">رقم البطاقة الوطنية</th>
+                        <th  style="text-align: right;width:14%;">النسب</th>
+                        <th  style="text-align: right;width:14%;">الإسم</th>
+                        <th  style="text-align: right;width:14%;">سند عدد</th>
+                        
+
+                    </tr> -->
+                    <tr>
+                        <th></th>
+               
+                        <!-- <th  style="text-align: right;">عدد صناديق الزيت</th>
+                        <th  style="text-align: right;">عدد صناديق السكر</th>
+                        <th  style="text-align: right;">عدد أكياس الدقيق</th> -->
+                        <th  style="text-align: right;">  العنوان</th>
+                        <th  style="text-align: right;"> إسم المصلحة</th>
+                        <th  style="text-align: right;"> الهاتف</th>
+                        <th  style="text-align: right;">النسب</th>
+                        <th  style="text-align: right;">الإسم</th>
+                        <th  style="text-align: right;">رقم البطاقة الوطنية</th>
+                        <th  style="text-align: right;">رمز المستفيد</th>
+                        
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let p of affectations['_embedded'].affectations">
+                        <td>
+                            <a class="btn btn-danger" (click)="onDeleteAffectation(p['_links'].self.href)"><i class="fa fa-remove" style="font-size:17px"></i> </a>&nbsp;
+                            <!-- <a class="btn btn-secondary text-light"  (click)="onEditAffectation(p)"><i class="fa fa-edit" style="font-size:17px"></i> </a>&nbsp; -->
+                            <a class="btn btn-success"  (click)="download(p)"><i class="fa fa-print" style="font-size:17px"></i> </a>
+                          
+                        </td>
+                        <td  style="text-align: right;">{{p.address}}</td>
+                        <td  style="text-align: right;">{{p.service?.name}}</td>
+                        <td  style="text-align: right;">{{p.tele}}</td>
+                     
+                      
+                        <!-- <td style="text-align: right;">{{p.oeil}}</td>
+                        <td  style="text-align: right;">{{p.sucr}}</td>
+                        <td  style="text-align: right;">{{p.farine}}</td> -->
+                     
+                        <td  style="text-align: right;">{{p.nom}}</td>
+                        <td style="text-align: right;">{{p.prenom}}</td>
+                        <td  style="text-align: right;">{{p.cin}}</td>
+                        <td  style="text-align: right;">{{p.signe}}</td>
+                        
+                       
+                       
+                  
+                    </tr>
+                </tbody>
+              
+            </table>
+            <!-- <ul *ngIf="pages" class="pagination" style="float: right;">
+                <li [ngClass]="i==currentPage ? 'page-item active' : 'page-item'" *ngFor="let p of pages;let i = index" >
+                    <a class="clickable page-link" (click)="onPageAffectation(i)" >{{i}}</a>
+                </li>
+            </ul> -->
+         
+          
+           
+        </div>
+    </div>
+</div>

@@ -1,0 +1,56 @@
+
+<div class="col-md-8 mx-auto">
+    <button (click)="gotoList()" class="btn btn-primary">لائحة المصالح</button> <br> <br>
+    <!-- <button (click)="gotoList()" class="btn btn-primary" style="float: right;">Liste des projets</button><br><br> -->
+    <div class="card">
+        <div class="card-header" style="display: block;text-align: right;">
+            إضافة إستفادة جديدة
+        </div>
+        <div class="card-body">
+        <form #f="ngForm" (ngSubmit)="onUpdateAxe(f.value)" *ngIf="currentAxe">
+           
+                 
+          
+                            <div class="row">
+                              
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label  class="control-label" style="display: block;text-align: right;">
+                                            : * المصلحة
+                                           
+                                        </label>
+                                        <input type="text" name="nameAr" style="text-align: right;"  ngModel  [(ngModel)]="currentAxe.nameAr" class="form-control">
+                                    </div> 
+                                 
+                                </div>
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label  class="control-label" style="display: block;text-align: right;">
+                                            : * المصلحة بالفرنسية
+                                        </label>
+                                        <input type="text" name="name" style="text-align: right;"  ngModel  [(ngModel)]="currentAxe.name" class="form-control">
+                                    </div> 
+                                
+                                </div>
+                            </div>
+                      
+                      
+                         
+                      
+                           
+                           
+                    
+                    
+                      
+                       <div>
+                        <button class="btn btn-success"  style="float: right; margin-left: 7px;" type="submit">حفظ</button>
+                 
+                       
+                  
+                       </div>
+            
+    
+        </form>
+    </div>
+    </div>
+</div>

@@ -1,0 +1,69 @@
+<div class="container">
+    <div class="card card-primary">
+        <div class="card-header" style="text-align: right;">لائحة الإستفادات</div>
+        
+        <div class="card-body">
+            <div class="d-flex">
+                <div class="mr-auto d-inline-block">
+             
+                    <button (click)="ajouter()" class="btn btn-primary" >
+                        إضافة مصلحة جديدة <i class="fa fa-plus-square-o" style="font-size:17px"></i> 
+                        </button>
+                </div>
+            <div class="d-inline-block">
+                <form #f="ngForm" class="form-inline" (ngSubmit)="onChercher(f.value)">
+                    <div class="form-group row">
+                        <button type="submit" class="btn btn-info" style="width: 60px;"><i class="fa fa-search" style="font-size:17px"></i> </button>
+                       &nbsp;
+                      
+                        <input type="text" class="form-control" ngModel name="keyword">&nbsp;
+                        <label class="col-form-label mr-3">المصلحة </label>
+                     
+                        
+                    </div>
+                    
+               </form>
+            </div>
+           
+        </div>
+      
+          
+            <table class="table table-bordered mt-3" *ngIf="services">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th style="text-align: right;">المصلحة بالعربية  </th>
+                        <th style="text-align: right;">المصلحة بالفرنسية </th>
+                        <th style="text-align: right;"> Id</th>
+                 
+                        
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let p of services['_embedded'].services">
+                        <td style="width:20%">
+                            <a class="btn btn-danger" (click)="onDeleteAffectation(p['_links'].self.href)"><i class="fa fa-remove" style="font-size:17px"></i>حدف </a>&nbsp;
+                            <a class="btn btn-success text-light"  (click)="onEditAffectation(p)"><i class="fa fa-edit" style="font-size:17px"></i> تبديل</a>&nbsp;
+                            
+                          
+                        </td>
+                       
+                        <td  style="text-align: right;">{{p.nameAr}}</td>
+                        <td  style="text-align: right;">{{p.name}}</td>
+                        <td  style="text-align: right;">{{p.id}}</td>
+                    </tr>
+                </tbody>
+              
+            </table>
+            <ul *ngIf="pages" class="pagination" style="float: right;">
+                <li [ngClass]="i==currentPage ? 'page-item active' : 'page-item'" *ngFor="let p of pages;let i = index" >
+                    <a class="clickable page-link" (click)="onPageAffectation(i)" >{{i}}</a>
+                </li>
+            </ul>
+         
+          
+           
+        </div>
+    </div>
+</div>

@@ -22,9 +22,9 @@
                            <div class="col">
                             <div class="form-group">
                                 <label  class="control-label" style="display: block;text-align: right;">
-                                    : * سند عدد
+                                    : * رمز المستفيد
                                 </label>
-                                <input type="text" name="num" style="text-align: right;" ngModel class="form-control">
+                                <input type="text" name="signe" style="text-align: right;" ngModel class="form-control">
                             </div> 
                            </div>
                            
@@ -51,19 +51,38 @@
                         <div class="col">
                             <div class="form-group">
                                 <label  class="control-label" style="display: block;text-align: right;">
+                                    : * العنوان
+                                </label>
+                                <input type="text" name="address" style="text-align: right;" ngModel class="form-control">
+                            </div> 
+                           </div>
+                        <div class="col">
+                            <div class="form-group">
+                                <label  class="control-label" style="display: block;text-align: right;">
+                                    : * الهاتف
+                                </label>
+                                <input type="text" name="tele" style="text-align: right;" ngModel class="form-control">
+                            </div> 
+                           </div>
+                          
+                       </div>
+                       <div class="row">
+                        <!-- <div class="col">
+                            <div class="form-group">
+                                <label  class="control-label" style="display: block;text-align: right;">
                                     : عدد صناديق السكر
                                 </label>
                                 <input type="number" name="sucr" style="text-align: right;" ngModel class="form-control">
                             </div> 
-                           </div>
-                           <div class="col">
+                           </div> -->
+                           <!-- <div class="col">
                             <div class="form-group">
                                 <label  class="control-label" style="display: block;text-align: right;">
                                     : عدد أكياس الدقيق
                                 </label>
                                 <input type="number" name="farine" style="text-align: right;" ngModel class="form-control">
                             </div> 
-                           </div>
+                           </div> -->
                        </div>
                        <div class="row">
                         <div class="col">
@@ -79,24 +98,99 @@
                                 <label  class="control-label" style="display: block;text-align: right;">
                                     : * نوع الخدمة
                                 </label>
-                                <select class="form-control" name="type" ngModel>
+                                <!-- <select class="form-control" name="type" ngModel> -->
                                     <!-- <option value=""  style="display: block;text-align: right;"></option> -->
-                                    <option  value="تسليم"   style="display: block;text-align: right;" >تسليم</option>
+                                    <!-- <option  value="تسليم"   style="display: block;text-align: right;" >تسليم</option>
                                     <option value="بيع"   style="display: block;text-align: right;">بيع</option>
+                                  </select> -->
+                                  <select class="form-control" name="type" *ngIf="types" [(ngModel)]="selectedType">
+                            
+                                    <option *ngFor="let type of types" [value]="type.id">{{type.name}}</option>
                                   </select>
+                          
+                          
                                   <!-- <input type="text" name="type" ngModel class="form-control"> -->
                             </div> 
                            </div>
                      
                          
-                           <div class="col">
+                           <!-- <div class="col">
                             <div class="form-group">
                                 <label  class="control-label" style="display: block;text-align: right;">
                                     : عدد صناديق الزيت
                                 </label>
                                 <input type="number" style="text-align: right;" name="oeil" ngModel class="form-control">
                             </div> 
+                           </div> -->
+                       </div>
+
+
+                       <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                <label  class="control-label" style="display: block;text-align: right;">
+                                    : *  الفئة
+                                </label>
+                                <select class="form-control" name="catgorie" *ngIf="categories" [(ngModel)]="selectedCategorie">
+                            
+                                    <option *ngFor="let categorie of categories" [value]="categorie.id">{{categorie.name}}</option>
+                                  </select>
+                          
+                                
+                            </div> 
                            </div>
+                        <div class="col">
+                            <div class="form-group">
+                                <label  class="control-label" style="display: block;text-align: right;">
+                                    : * المصلحة 
+                                </label>
+                           
+                                  <select class="form-control" name="service" *ngIf="services" [(ngModel)]="selectedService">
+                            
+                                    <option *ngFor="let service of services" [value]="service.id">{{service.name}}</option>
+                                  </select>
+                          
+                                
+                            </div> 
+                           </div>
+                     
+                     
+                         
+                     
+                       </div>
+
+                       <div class="row">
+                        <div class="col">
+                            <div class="form-group" style="float: right;">
+                                <label>   مؤهل للإستفادة
+                             
+                                 
+                                  </label><br>
+                                  <input type="checkbox" style="height: 20px;width: 20px;float: right;" name="moahal"  [(ngModel)]="moahal">
+                                  
+                          
+                                
+                            </div> 
+                           </div>
+                   
+                        <div class="col">
+                            <div class="form-group">
+                                <label  class="control-label" style="display: block;text-align: right;">
+                                    : *  مخزون
+                                </label>
+                                <select class="form-control" name="stock" *ngIf="stocks" [(ngModel)]="selectedStock">
+                            
+                                    <option *ngFor="let stock of stocks" [value]="stock.id">{{stock.reference}}</option>
+                                  </select>
+                          
+                                
+                            </div> 
+                           </div>
+                    
+                     
+                     
+                         
+                     
                        </div>
                      
                        <div>

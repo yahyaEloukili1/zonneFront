@@ -1,0 +1,150 @@
+
+<div class="container">
+    <h5 style="text-align: center;" class="mt-4 mb-3">إحصائيات حسب نوع الحصة</h5>
+    <table class="table table-bordered">
+        <tr>
+            <th>الدقيق</th>
+            <th>الزيت</th>
+            <th>السكر</th>
+          
+          
+            <th>المجموع</th>
+            
+            <th colspan="2">اللائحة</th>
+           
+        </tr>
+        <tr>
+          
+            <td>{{totalPC*50}}</td>
+            <td>{{totalPC*15}}</td>
+            <td>{{totalPC*24}}</td>
+            <td>{{totalPC}}</td>
+        
+      
+       
+            <td>PC</td>
+            <td>PC</td>
+        </tr>
+        <tr>
+          
+            <td>{{totalPN*50}}</td>
+            <td>{{totalPN*5}}</td>
+            <td>{{totalPN*24}}</td>
+            <td>{{totalPN}}</td>
+        
+      
+       
+            <td>PN</td>
+            <td>PN</td>
+        </tr>
+        <tr>
+          
+            <td>{{0}}</td>
+            <td>{{totalPCMF*15}}</td>
+            <td>{{totalPCMF*24}}</td>
+            <td>{{totalPCMF}}</td>
+        
+      
+       
+            <td>PC-MF</td>
+            <td>PC-MF</td>
+        </tr>
+    
+    </table>
+    <h5 style="text-align: center;" class="mt-4 mb-3">
+         (PC) إحصائيات حسب الفئات بالنسبة ل </h5>
+    <table class="table table-bordered">
+        <tr>
+            <th>الدقيق</th>
+            <th>الزيت</th>
+            <th>السكر</th>
+            <th>
+                المجموع
+            </th>
+            <th>
+                الفئة
+            </th>
+            
+        </tr>
+        <tr *ngFor="let c of arraypc;let i = index">
+            <td>{{c.affectationsLength * 50}}</td>
+            <td>{{c.affectationsLength * 15}}</td>
+            <td>{{c.affectationsLength * 24}}</td>
+            <td>
+                {{c.affectationsLength}}
+            </td>
+            <td>
+               {{c.categorie.name}}
+            </td>
+          
+       
+        </tr>
+    
+    </table>
+
+
+    <h5 style="text-align: center;" class="mt-4 mb-3">
+        (PN) إحصائيات حسب الفئات بالنسبة ل </h5>
+    <table class="table table-bordered">
+        <tr>
+            <th>الدقيق</th>
+            <th>الزيت</th>
+            <th>السكر</th>
+            <th>
+                المجموع
+            </th>
+            <th>
+                الفئة
+            </th>
+            
+        </tr>
+        <tr *ngFor="let c of arraypn;let i = index">
+            <td>{{c.affectationsLength * 50}}</td>
+            <td>{{c.affectationsLength * 5}}</td>
+            <td>{{c.affectationsLength * 24}}</td>
+            <td>
+                {{c.affectationsLength}}
+            </td>
+            <td>
+               {{c.categorie.name}}
+            </td>
+          
+       
+        </tr>
+    
+    </table>
+
+
+
+    <h5 style="text-align: center;" class="mt-4 mb-3">
+        (PCMF) إحصائيات حسب الفئات بالنسبة ل </h5>
+    <table class="table table-bordered">
+        <tr>
+            <th>الدقيق</th>
+            <th>الزيت</th>
+            <th>السكر</th>
+            <th>
+                المجموع
+            </th>
+            <th>
+                الفئة
+            </th>
+            
+        </tr>
+        <tr *ngFor="let c of arraypcmf;let i = index">
+            <td>{{c.affectationsLength * 0}}</td>
+            <td>{{c.affectationsLength * 15}}</td>
+            <td>{{c.affectationsLength * 24}}</td>
+            <td>
+                {{c.affectationsLength}}
+            </td>
+            <td>
+               {{c.categorie.name}}
+            </td>
+          
+       
+        </tr>
+    
+    </table>
+
+</div>

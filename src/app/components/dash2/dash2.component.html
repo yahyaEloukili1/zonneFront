@@ -1,0 +1,33 @@
+<div class="container">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>المستفيدين الغير المؤهلين</th>
+                <th>المكررين</th>
+                <th>المستفيدين</th>
+                <th>المجموع</th>
+                <th>الفئة</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+            <tr *ngFor="let c of arrayobj;let i = index" (ngOnInit)="updateTotals()">
+                <td>{{c.countMap.moahalFalseCount}}</td>
+                <td>{{c.countMap.repeatedElements}}</td>
+                <td>{{c.affectations.length}}</td>
+                <td>{{c.affectations.length}}</td>
+                <td>{{c.categorie.name}}</td>
+              </tr>
+              
+              <tr>
+                <td>{{totalMoahalFalseCount}}</td>
+                <td>{{totalRepeatedElements}}</td>
+                <td>{{totalAffectationsLength}}</td>
+                <td>{{totalAffectationsLength}}</td>
+                <td>Total</td>
+              </tr>
+              
+        
+        </tbody>
+    </table>
+</div>

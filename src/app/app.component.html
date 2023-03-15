@@ -13,9 +13,52 @@
           <a class="nav-link" [routerLink]="['/']" [routerLinkActive]="['is-active']">Home </a>
         </li> -->
         <li class="nav-item" *ngIf="pdiService.jwtToken">
-          <a class="nav-link btn btn-light text-primary" [routerLink]="['zonn/affectations']" [routerLinkActive]="['is-active']">لائحة الإستفادات</a>
+          <a class="nav-link" style="color: white;" [routerLink]="['zonn/dash2']" [routerLinkActive]="['is-active']">Dash2 </a>
         </li>
- 
+        &nbsp;
+        <li class="nav-item" *ngIf="pdiService.jwtToken">
+          <a class="nav-link" style="color: white;" [routerLink]="['zonn/dash']" [routerLinkActive]="['is-active']">Dash1 </a>
+        </li>
+        &nbsp;
+        <li class="nav-item" *ngIf="pdiService.jwtToken">
+          <a class="nav-link" style="color: white;" [routerLink]="['zonn/stocks']" [routerLinkActive]="['is-active']">المخازين </a>
+        </li>
+        &nbsp;
+        <li class="nav-item" *ngIf="pdiService.jwtToken">
+          <a class="nav-link" style="color: white;" [routerLink]="['zonn/statistiques']" [routerLinkActive]="['is-active']">إحصائيات </a>
+        </li>
+        &nbsp;
+        <li class="nav-item" *ngIf="pdiService.jwtToken">
+          <a class="nav-link" style="color: white;" [routerLink]="['zonn/services']" [routerLinkActive]="['is-active']">الملحقات الإدارية </a>
+        </li>
+        &nbsp;
+        <li class="nav-item" *ngIf="pdiService.jwtToken">
+          <a class="nav-link" style="color: white;" [routerLink]="['zonn/categories']" [routerLinkActive]="['is-active']">الفئات </a>
+        </li>
+        &nbsp;
+        <li class="nav-item" *ngIf="pdiService.jwtToken">
+          <a class="nav-link" style="color: white;" [routerLink]="['zonn/types']" [routerLinkActive]="['is-active']">أنواع الحصص </a>
+        </li>
+        &nbsp;
+        <li class="nav-item" *ngIf="pdiService.jwtToken">
+          <a class="nav-link" style="color: white;" [routerLink]="['zonn/mokararin']" [routerLinkActive]="['is-active']"> المكررين</a>
+        </li>
+        &nbsp;
+     
+        <li class="nav-item" *ngIf="pdiService.jwtToken">
+          <a class="nav-link" style="color: white;" [routerLink]="['zonn/affectations3']" [routerLinkActive]="['is-active']"> PC-MF</a>
+        </li>
+        &nbsp;
+     
+        <li class="nav-item" *ngIf="pdiService.jwtToken">
+          <a class="nav-link" style="color: white;" [routerLink]="['zonn/affectations2']" [routerLinkActive]="['is-active']">PN</a>
+        </li>
+        &nbsp;
+         
+        <li class="nav-item" *ngIf="pdiService.jwtToken">
+          <a class="nav-link" style="color: white;" [routerLink]="['zonn/affectations']" [routerLinkActive]="['is-active']"> PC</a>
+        </li>
+        &nbsp;
         <h3 style="text-align: center;color: white;" *ngIf="!pdiService.jwtToken">
           تدبير لوائح الإستفادات
         </h3>
@@ -27,7 +70,7 @@
     </div>
   </div>
   </nav>
-  <div class="mt-5">
+  <div class="mt-4">
     <router-outlet> </router-outlet>
    
   </div>
